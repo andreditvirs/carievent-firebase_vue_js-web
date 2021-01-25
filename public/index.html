@@ -2,16 +2,68 @@
 <html lang="">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>CariEvent - Informasi dan Manajemen Event</title>
+    <link rel="icon" href="./assets/image/icon-web.png">
+
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/styles.css" rel="stylesheet">
+    <link href="assets/fontawesome/css/all.min.css" rel="stylesheet">
   </head>
   <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
     <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <script>
+      $(document).ready(function() {
+      $("#carousel-event-terpopuler").on("slide.bs.carousel", function(e) {
+        var $e = $(e.relatedTarget);
+        var idx = $e.index();
+        var itemsPerSlide = 4;
+        var totalItems = $(".carousel-item").length;
+    
+        if (idx >= totalItems - (itemsPerSlide - 1)) {
+          var it = itemsPerSlide - (totalItems - idx);
+          for (var i = 0; i < it; i++) {
+            // append slides to end
+            if (e.direction == "left") {
+              $(".carousel-item")
+                .eq(i)
+                .appendTo(".carousel-inner");
+            } else {
+              $(".carousel-item")
+                .eq(0)
+                .appendTo($(this).find(".carousel-inner"));
+            }
+          }
+        }
+      });
+      $("#carousel-event-terdekat").on("slide.bs.carousel", function(e) {
+        var $e = $(e.relatedTarget);
+        var idx = $e.index();
+        var itemsPerSlide = 4;
+        var totalItems = $(".carousel-item").length;
+    
+        if (idx >= totalItems - (itemsPerSlide - 1)) {
+          var it = itemsPerSlide - (totalItems - idx);
+          for (var i = 0; i < it; i++) {
+            // append slides to end
+            if (e.direction == "left") {
+              $(".carousel-item")
+                .eq(i)
+                .appendTo(".carousel-inner");
+            } else {
+              $(".carousel-item")
+                .eq(0)
+                .appendTo($(this).find(".carousel-inner"));
+            }
+          }
+        }
+      });
+    });
+    
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
   </body>
 </html>
